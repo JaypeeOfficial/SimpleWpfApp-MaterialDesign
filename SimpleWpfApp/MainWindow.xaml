@@ -76,13 +76,13 @@
                 <TextBlock Margin="0 25 0 5"
                                HorizontalAlignment="Center"
                                FontSize="28"
-                               Foreground="DarkOrange"
+                               Foreground="#65451F"
                                FontWeight="Bold"                             
                                Text="Welcome!"/>
 
                 <TextBlock FontSize="17"
                            FontWeight="SemiBold"
-                           Foreground="DarkOrange"
+                           Foreground="#65451F"
                            HorizontalAlignment="Center"
                            Text="Log in to your Account"/>
 
@@ -92,7 +92,7 @@
                                FontSize="18"
                                materialDesign:HintAssist.Hint="Enter User Name"
                                BorderThickness="2"
-                               BorderBrush="Orange"                  
+                               BorderBrush="#65451F"                  
                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                 
                 <PasswordBox Margin="0 20 0 0"
@@ -101,7 +101,7 @@
                             FontSize="18"
                             materialDesign:HintAssist.Hint="Enter Password"
                             BorderThickness="2"
-                            BorderBrush="Orange"
+                            BorderBrush="#65451F"
                             Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
 
                 <Button Margin="0 20 0 0"
@@ -116,11 +116,11 @@
                         Content="LOG IN" Click="loginBtn_Click" Cursor="Hand">
                     
                     <Button.BitmapEffect>
-                        <DropShadowBitmapEffect Color="DarkOrange"
+                        <DropShadowBitmapEffect Color="Black"
                                                 Direction="320"
                                                 Softness="1"
-                                                ShadowDepth="3" 
-                                                Opacity="0.5" />
+                                                ShadowDepth="2" 
+                                                Opacity="0.9" />
                     </Button.BitmapEffect>
 
                 </Button>

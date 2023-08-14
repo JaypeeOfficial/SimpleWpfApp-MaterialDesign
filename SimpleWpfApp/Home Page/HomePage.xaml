@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SimpleWpfApp"
+        xmlns:local="clr-namespace:SimpleWpfApp" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="HomePage"
         Height="700"
@@ -14,12 +14,215 @@
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
         Background="Transparent">
+
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="43"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="43"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    
     
     <Grid>
-
-        <Border Background="#282D33"
+        <Border Background="#C8AE7D"
                 BorderBrush="#3A4149"
                 BorderThickness="5"
                 CornerRadius="8,8,0,8"/>
+
+        <Grid Height="70"
+              VerticalAlignment="Top" 
+              Background="#765827">
+        </Grid>
+
+            
+        <Grid x:Name="GridMenu"
+              Width="43" 
+              HorizontalAlignment="Left"
+              Background="#EAC696">
+
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="5" 
+                                  Color="Black"
+                                  Opacity="0.5"/>
+            </Grid.Effect>
+
+            <StackPanel>
+
+                <Grid 
+                      Height="170"
+                      Background="White">
+
+                    <Button x:Name="ButtonCloseMenu"
+                            Width="60"
+                            Height="60"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Visibility="Collapsed"
+                            Click="ButtonCloseMenu_Click">
+
+                        <materialDesign:PackIcon Foreground="#FFF3872C"
+                                                 Kind="ArrowLeft"                                               
+                                                 Width="25"
+                                                 Height="25"/>
+                    </Button>
+
+                    <Button x:Name ="ButtonOpenMenu" 
+                            Width="60"
+                            Height="60"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Click="ButtonOpenMenu_Click">
+
+                        <materialDesign:PackIcon Foreground="#EAC696"
+                                                 Kind="Menu"
+                                                 Width="24"
+                                                 Height="25"/>
+                    </Button>
+                                     
+                </Grid>
+
+                <ListView>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="ViewDashboard"
+                                                           Height="25"
+                                                           VerticalAlignment="Center"
+                                                           Width="25"/>
+                            <TextBlock Text="Home" 
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       FontSize="19"
+                                       Margin="35 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Warehouse"
+                                                           VerticalAlignment="Center" 
+                                                           Height="25"
+                                                           Width="25"/>
+                            <TextBlock Text="Inventory" 
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       FontSize="19"
+                                       Margin="35 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Inbox"
+                                                           Height="25"
+                                                           VerticalAlignment="Center" 
+                                                           Width="25"/>
+                            <TextBlock Text="Receiving" 
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       FontSize="19"
+                                       Margin="35 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Import"
+                                                           Height="25"
+                                                           VerticalAlignment="Center" 
+                                                           Width="25"/>
+                            <TextBlock Text="Import" 
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       FontSize="19"
+                                       Margin="35 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Settings"
+                                                           Height="25"
+                                                           VerticalAlignment="Center" 
+                                                           Width="25"/>
+                            <TextBlock Text="Setup" 
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       FontSize="19"
+                                       Margin="35 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="File"
+                                                           Height="25"
+                                                           VerticalAlignment="Center" 
+                                                           Width="25"/>
+                            <TextBlock Text="Reports" 
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       FontSize="19"
+                                       Margin="35 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+
+                </ListView>
+
+
+            </StackPanel>
+
+        
+        
+        
+        </Grid>
+
+    
     </Grid>
+    
+    
+    
 </Window>

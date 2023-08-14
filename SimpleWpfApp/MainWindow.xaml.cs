@@ -106,9 +106,6 @@ namespace SimpleWpfApp
                         // For example, you might extract and store an authentication token from the response.
                         string responseData = await response.Content.ReadAsStringAsync();
 
-
-                        //   MessageBox.Show("IKAW AY NAKAPASOK BET KITA!");     
-
                         this.Close();
 
                         HomePage landingPage = new HomePage();
